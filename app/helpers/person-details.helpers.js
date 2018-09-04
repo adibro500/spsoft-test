@@ -11,6 +11,10 @@ function PersonDetailsHelpers() {
 
 const Person = require('../models/person_details.models.js')
 
+PersonDetailsHelpers.prototype.default = (req,res) =>{
+        res.send('Welcome to S P Software')
+}
+
     // Create and Save a new Person
     PersonDetailsHelpers.prototype.create = (req, res) => {
     if(req.name !== undefined && req.desc !== undefined && req.img_url !== undefined && req.name !== '' && req.desc !== '' && req.img_url !== '' ){
