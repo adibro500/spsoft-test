@@ -1,5 +1,5 @@
 var express = require('express')
-var cors = require('cors');
+var cors = require('cors')
 var path = require('path')
 var bodyParser = require('body-parser')
 var fs = require('fs')
@@ -8,20 +8,28 @@ var app = express()
 // const assert = require('assert')
 // const MongoClient = require('mongodb').MongoClient
 app.use(cors())
-const mongoose = require('mongoose');
+
+app.routes('/', (req, res, err) => {
+  if(err)
+  res.status(404).send({
+    meassage:'Failed to start service'
+  })
+  res.send('Welcome to S P Software')
+})
+const mongoose = require('mongoose')
 
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise
 
 // Connecting to the database
 mongoose.connect(dbConst.DB_URL, {
     useNewUrlParser: true
 }).then(() => {
-    console.log("[Successfully connected to the database]");    
+    console.log("[Successfully connected to the database]")    
 }).catch(err => {
-    console.log('Could not connect to the database. Exiting now...');
-    process.exit();
-});
+    console.log('Could not connect to the database. Exiting now...')
+    process.exit()
+})
 function config () {
           // Import configuration
         // setMiddelWares(app)
@@ -52,14 +60,14 @@ function setRoutes (app) {
 
 // var listener = config().listen(
 //     dbConst.PORT, () => {
-//         console.log(`[Connected to server on port : ${dbConst.PORT}]`);
+//         console.log(`[Connected to server on port : ${dbConst.PORT}]`)
 //     }
 
-    app.set('port', (process.env.PORT || 3000));
+    app.set('port', (process.env.PORT || 3000))
 
 app.listen(app.get('port'), function() {
-    console.log('Node app is running on port', app.get('port'));
-  });
+    console.log('Node app is running on port', app.get('port'))
+  })
 
 
   

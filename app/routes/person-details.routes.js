@@ -7,7 +7,7 @@ var personDetailsHelpers = new PersonDetailsHelpers()
 
 module.exports = function(app) {
     
-// console.log(db);
+// console.log(db)
 
 app.post(urlConst.VERSION_ID+urlConst.PERSON_COLLECTION_QUERY.POST_PERSON, personDetailsHelpers.create)
 

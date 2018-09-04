@@ -42,12 +42,12 @@ const Person = require('../models/person_details.models.js')
     PersonDetailsHelpers.prototype.findAll = (req, res) => {
         Person.find()
         .then(persons => {
-            res.send(persons);
+            res.send(persons)
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while retrieving Persons."
-            });
-        });
+            })
+        })
     }
     
     // Find a single Person with a PersonId
@@ -57,19 +57,19 @@ const Person = require('../models/person_details.models.js')
             if(!person) {
                 return res.status(404).send({
                     message: "Person not found with id " + req.params.person_id
-                });            
+                })            
             }
             res.send(person)
         }).catch(err => {
             if(err.kind === 'ObjectId') {
                 return res.status(404).send({
                     message: "Person not found with id " + req.params.person_id
-                });                
+                })                
             }
             return res.status(500).send({
                 message: "Error retrieving Person with id " + req.params.person_id
-            });
-        });
+            })
+        })
     }
     
     // Update a Person identified by the PersonId in the request
@@ -77,7 +77,7 @@ const Person = require('../models/person_details.models.js')
         if(!req.body) {
             return res.status(400).send({
                 message: "Person content can not be empty"
-            });
+            })
         }
     
         // Find Person and update it with the request body
@@ -91,19 +91,19 @@ const Person = require('../models/person_details.models.js')
             if(!person) {
                 return res.status(404).send({
                     message: "Person not found with id " + req.params.person_id
-                });
+                })
             }
-            res.send(person);
+            res.send(person)
         }).catch(err => {
             if(err.kind === 'ObjectId') {
                 return res.status(404).send({
                     message: "Person not found with id " + req.params.person_id
-                });                
+                })                
             }
             return res.status(500).send({
                 message: "Error updating Person with id " + req.params.person_id
-            });
-        });
+            })
+        })
     }
     
     // Delete a Person with the specified PersonId in the request
@@ -113,19 +113,19 @@ const Person = require('../models/person_details.models.js')
             if(!person) {
                 return res.status(404).send({
                     message: "Person not found with id " + req.body.person_id
-                });
+                })
             }
-            res.send({message: "Person deleted successfully!"});
+            res.send({message: "Person deleted successfully!"})
         }).catch(err => {
             if(err.kind === 'ObjectId' || err.name === 'NotFound') {
                 return res.status(404).send({
                     message: "Person not found with id " + req.body.person_id
-                });                
+                })                
             }
             return res.status(500).send({
                 message: "Could not delete Person with id " + req.body.person_id
-            });
-        });
+            })
+        })
     }
 
 

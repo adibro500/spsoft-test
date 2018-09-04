@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-// const beautifyUnique = require('mongoose-beautiful-unique-validation');
+const mongoose = require('mongoose')
+// const beautifyUnique = require('mongoose-beautiful-unique-validation')
 
 const PersonSchema = mongoose.Schema({
     name:  { type: String, index: true, unique:true, dropDups: true },
@@ -8,8 +8,8 @@ const PersonSchema = mongoose.Schema({
 
 }, {
     timestamps: true
-});
-// PersonSchema.plugin(beautifyUnique);
+})
+// PersonSchema.plugin(beautifyUnique)
 
 
 module.exports = mongoose.model('Person', PersonSchema)
