@@ -9,13 +9,7 @@ var app = express()
 // const MongoClient = require('mongodb').MongoClient
 app.use(cors())
 
-app.get('/', (req, res, err) => {
-  if(err)
-  res.status(404).send({
-    meassage:'Failed to start service'
-  })
-  res.send('Welcome to S P Software')
-})
+
 const mongoose = require('mongoose')
 
 

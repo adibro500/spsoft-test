@@ -8,7 +8,14 @@ var personDetailsHelpers = new PersonDetailsHelpers()
 module.exports = function(app) {
     
 // console.log(db)
-
+app.get('/', (req, res, err) => {
+    if(err)
+    res.status(404).send({
+      meassage:'Failed to start service'
+    })
+    res.send('Welcome to S P Software')
+  })
+  
 app.post(urlConst.VERSION_ID+urlConst.PERSON_COLLECTION_QUERY.POST_PERSON, personDetailsHelpers.create)
 
     // Retrieve all Notes
