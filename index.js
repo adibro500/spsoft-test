@@ -9,7 +9,7 @@ var app = express()
 // const MongoClient = require('mongodb').MongoClient
 app.use(cors())
 
-app.routes('/', (req, res, err) => {
+app.get('/', (req, res, err) => {
   if(err)
   res.status(404).send({
     meassage:'Failed to start service'
