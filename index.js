@@ -57,10 +57,10 @@ function setRoutes (app) {
 //         console.log(`[Connected to server on port : ${dbConst.PORT}]`)
 //     }
 
-    app.set('port', (process.env.PORT || 5000))
+var listener = config().set('port', (process.env.PORT || 5000))
 
-app.listen(app.get('port'), function() {
-    console.log('Node app is running on port', app.get('port'))
+listener.listen(listener.get('port'), function() {
+    console.log('Node app is running on port', listener.get('port'))
   })
 
 
